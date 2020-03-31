@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ilk django sayfası </title>
-</head>
-<body>
-<h1>ders 1 deneme yapıyıoruz ilk django projem</h1>
-<h1>ders 1 deneme yapıyıoruz ilk django projem</h1>
-<h1>ders 1 deneme yapıyıoruz ilk django projem</h1>
-</body>
-</html>
+{% extends "homebase.html" %}
+
+{% block title %}İNDEX SAYFASI {% endblock %}
+{% block keywords %}İNDEX SAYFASI anahtar kelimeler{% endblock %}
+{% block description %}İNDEX SAYFASI açıklaması{% endblock %}
+
+
+{% block slider %}
+           {% include "slider.html" %}
+{% endblock %}
+
+{% block maincontent %}
+           {% include "maincontent.html" %}
+{% endblock %}
