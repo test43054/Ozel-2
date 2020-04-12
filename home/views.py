@@ -55,3 +55,12 @@ def iletisim(request):
     context = {'setting': setting, 'form': form}
     return render(request, 'iletisim.html', context)
 
+
+
+def category_products(request, id, slug):
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+    products = Product.objects.filter(category_id=id)
+    #products = Product.objects.all()
+    context = {'products': products, 'category': category,'categorydata':categorydata}
+    return render(request,'products.html', context)

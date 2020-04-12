@@ -1,0 +1,72 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{categorydata.title}} products {% endblock %}
+{% block keywords %} {{categorydata.keywords}} {% endblock %}
+{% block description %} {{categorydata.description}} {% endblock %}
+
+{% block head %}
+   <link rel ='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+
+
+{% block maincontent %}
+<div id="contact-page" class="container">
+    	<div class="bg">
+	    	<div class="row">
+	    		<div class="col-sm-12">
+					<h2 class="title text-center">Contact <strong>Us</strong></h2>
+				</div>
+			</div>
+    		<div class="row">
+                <div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">{{categorydata.title}}</h2>
+						<!--1 ürün*******************************************************-->
+						{% for rs in products %}
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="{{ rs.image.url }}" alt="" />
+										<h2>{{ rs.price }}</h2>
+										<p>{{ rs.title }}</p>
+										<a href="/product/{{rs.id}}/{{rs.slug}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<h2>{{ rs.price }}</h2>
+											<p>{{ rs.title }}</p>
+											<a href="/product/{{rs.id}}/{{rs.slug}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						<!--1 ürünsonu**************************************************-->
+
+
+						<ul class="pagination">
+							<li class="active"><a href="">1</a></li>
+							<li><a href="">2</a></li>
+							<li><a href="">3</a></li>
+							<li><a href="">&raquo;</a></li>
+						</ul>
+					</div><!--features_items-->
+				</div>
+
+	    	</div>
+    	</div>
+    </div><!--/#contact-page-->
+
+
+
+
+{% endblock %}
