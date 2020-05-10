@@ -142,36 +142,29 @@
 					</div>
 				</div>
 				<h3>{{product.title}}</h3>
-
+{% load static %}
 				<div class="col-sm-9 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
 								<img src="{{product.image.url}}" alt="" />
+								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 
-								  <!-- Wrapper for slides tasarım okadar kötüki kurtarılmıyor -->
-								  {% for rs in images %}
+								  <!-- Wrapper for slides -->
 								    <div class="carousel-inner">
 										<div class="item active">
+										  <a href=""><img src="{{product.image.url}}" style="Height:50px" alt=""></a>
 
-											<img src="{{rs.image.url}}"  alt="" />
-											<!--
-										  <a href="#"><img src="{{rs.image.url}}" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										  -->
+											{% for rs in images %}
+										  <a href=""><img src="{{rs.image.url}}" style="Height:50px" alt=""></a>
+											{% endfor %}
+
 										</div>
-										<!--
-										<div class="item">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										 -->
+										
+
 									</div>
-								{% endfor %}
 
 								  <!-- Controls -->
 								  <a class="left item-control" href="#similar-product" data-slide="prev">
@@ -180,7 +173,6 @@
 								  <a class="right item-control" href="#similar-product" data-slide="next">
 									<i class="fa fa-angle-right"></i>
 								  </a>
-								
 							</div>
 
 						</div>
@@ -300,6 +292,65 @@
 							  </a>
 						</div>
 					</div><!--/recommended_items-->
+
+					<!-- yorum kısmı -->
+					<div class="tab-pane fade active in" id="reviews" >
+								<div class="col-sm-12">
+									{% if messages %}
+									     {% for message in messages %}
+									         <div class="alert alert-{{message.tags}}" role="alert">
+												 {{ message }}
+											 </div>
+									     {% endfor %}
+									{% endif %}
+									
+									<p><b>YORUM yapma ALANI</b></p>
+
+									<form action="/product/addcomment/{{ product.id }}" method="post">
+										{% csrf_token %}
+										<span>
+											<input class="input" type="text" name="subject" id="id_subject" placeholder="yorumu buraya yazınız please"/>
+
+										</span>
+										<textarea class="input" id="id_comment" name="comment" placeholder="gir bişeyler" ></textarea>
+
+										{% if user.id is not None %}
+										<button class="primary-btn">
+											send commnet lan
+										</button>
+										{% else %},
+										yorum ekwelemk için üye ol
+										{% endif %}
+									</form>
+								</div>
+							</div>
+					<!-- yorum kısmı -->
+					<!--yorum gösterme kısmı-->
+					<p><b>YORUMlar ALANI</b></p>
+					{% for rs in comments %}
+                                <div>
+
+                                    <ul>
+                                        <li><a href=""><i class="fa fa-user"></i>kullanıcı-{{rs.user.first_name}}</a></li>
+                                        <li><a href=""><i class="fa fa-calendar-o"></i>{{ rs.create_at }}</a></li>
+                                         <!--
+                                        <i class="fa fa-star{% if rs.rate < 1 %}-o empty{% endif %}"></i>
+                                        <i class="fa fa-star{% if rs.rate < 2 %}-o empty{% endif %}"></i>
+                                        <i class="fa fa-star{% if rs.rate < 3 %}-o empty{% endif %}"></i>
+                                        <i class="fa fa-star{% if rs.rate < 4 %}-o empty{% endif %}"></i>
+                                        <i class="fa fa-star{% if rs.rate < 5 %}-o empty{% endif %}"></i>
+                                         -->
+                                    </ul>
+                                    <div>
+                                        <h4>{{ rs.subject }}</h4>
+                                        <p>{{ rs.comment | safe}}</p>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <br>
+                            {% endfor %}
+                 <!--yorum gösterme kısmı-->
+
 
 				</div>
 

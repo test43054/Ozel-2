@@ -24,7 +24,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/home/templates" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/newsproject" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -51,13 +51,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1585754949956" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1589150656383">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589150656383" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1585337418117">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585337418117" />
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1586739454598">
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1589140860063">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586739454598" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589140860063" />
   </component>
 </project>
