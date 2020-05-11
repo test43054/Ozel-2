@@ -24,6 +24,9 @@
 					</div>
 				</div>
 			</div>
+
+
+
 		</div><!--/header_top-->
 
 		<div class="header-middle"><!--header-middle-->
@@ -109,11 +112,13 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
-					</div>
+					<div class="header-search">
+				<form action="/search/" method="post">
+					{% csrf_token %}
+					<input name="query" class="input search-input" type="text" placeholder="giriniz">
+					<button class="search-btn"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
 				</div>
 			</div>
 		</div><!--/header-bottom-->
