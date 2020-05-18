@@ -1,0 +1,85 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{profile.user_name}} Profile{% endblock %}
+{% block keywords %}{{setting.keywords}}{% endblock %}
+{% block description %}{{setting.description}}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+
+{% block maincontent %}
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-3">
+
+                    <div class="contact-form">
+
+                        <div class="status alert alert-success" style="display: none"></div>
+
+                        {% include "user_panel.html" %}
+
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="contact-info">
+                        <h2 class="title text-center">User Infarmation</h2>
+
+
+
+                        <table class="table table-condensed">
+
+                            <tr class="cart_menu">
+
+                            <tr>
+                                <th class="text-left">
+                                    <a href="/user/update" class="btn btn-primary">Update Profile</a>
+                                    <a href="/user/password" class="btn btn-primary">Change Password</a>
+                                </th>
+                                <td class="text-left" ><img src="{{profile.image.url}}" style="height: 250px" alt=""></td>
+                            </tr>
+
+                            <tr>
+                                <th class="text-left">Name Surname</th>
+                                <td class="text-left">{{profile.user_name}}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="text-left">Email</th>
+                                <td class="text-left">{{profile.user.email}}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="text-left">Phone</th>
+                                <td class="text-left">{{profile.phone}}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="text-left">Address</th>
+                                <td class="text-left">{{profile.address}}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="text-left">City</th>
+                                <td class="text-left">{{profile.city}}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="text-left">Country</th>
+                                <td class="text-left">{{profile.country}}</td>
+                            </tr>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
