@@ -1,0 +1,62 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{profile.user_name}} Profile{% endblock %}
+{% block keywords %}{{setting.keywords}}{% endblock %}
+{% block description %}{{setting.description}}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+
+{% block maincontent %}
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-3">
+
+                    <div class="contact-form">
+
+                        <div class="status alert alert-success" style="display: none"></div>
+
+                        {% include "user_panel.html" %}
+
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="contact-info">
+                        <h2 class="title text-center">User comments</h2>
+
+
+                        <table class="table table-condensed">
+
+                            <tr class="cart_menu">
+
+                            {% for rs in comments %}
+
+                            <tr>
+
+                                <td><h5>product</h5><a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">{{ rs.product.title}}</a></td>
+                                <td><h5>subject</h5>{{ rs.subject }}</td>
+                                <td><h5>comment</h5>{{ rs.comment }}</td>
+                                <td><h5>status</h5>{{ rs.status }}</td>
+                                <td><h5>oluş.tar.</h5>{{ rs.create_at }}</td>
+                                <td><a href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('silinecek onaylıyormusun')">sil</a></td>
+                            </tr>
+
+                            {% endfor %}
+
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
