@@ -1,0 +1,62 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{profile.user_name}} Profile{% endblock %}
+{% block keywords %}{{setting.keywords}}{% endblock %}
+{% block description %}{{setting.description}}{% endblock %}
+
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+
+{% block maincontent %}
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-3">
+
+                <div class="contact-form">
+
+                    <div class="status alert alert-success" style="display: none"></div>
+
+                    {% include "user_panel.html" %}
+
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="contact-info">
+                    <h2 class="title text-center">User add product</h2>
+
+
+                    <table class="table table-condensed">
+
+                        <tr class="cart_menu">
+
+                            <h1>denemeler11</h1>
+                            <form action="/addproduct/" method="post" enctype="multipart/form-data"><!--anladımö benim bun ları bi sindirmem lazım:)-->
+                                {% csrf_token %}
+                                <fieldset class="form-group">
+                                    {{ form.media }}
+                                    {{ form.as_p }}
+                                </fieldset>
+
+                                <input class="primary-btn" type="submit" value="Add Product">
+
+                                {% if user.id is not None %}
+                                {% else %},
+                                {% endif %}
+                            </form>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

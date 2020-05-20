@@ -2,6 +2,7 @@ import json
 
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -9,15 +10,16 @@ from django.shortcuts import render
 from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormu, ContactFormMessage, UserProfile
 from product.models import Product, Category, Images, Comment
+from user.models import AddProductForm
 
 
 def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Product.objects.all()[:10]
     category=Category.objects.all()
-    dayproducts = Product.objects.all()[:7]
-    lastproducts = Product.objects.all().order_by('-id')[:7]
-    randomproducts = Product.objects.all().order_by('?')[:3]
+    dayproducts = Product.objects.filter(status='True')[:6]
+    lastproducts = Product.objects.filter(status='True').order_by('-id')[:7]
+    randomproducts = Product.objects.filter(status='True').order_by('?')[:3]
 
     context = {'setting': setting,
                'page': 'home',
@@ -33,13 +35,21 @@ def index(request):
 
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page': 'hakkimizda'}
+    category = Category.objects.all()
+    context = {'setting': setting,
+               'page': 'hakkimizda',
+               'category':category,
+    }
     return render(request, 'hakkimizda.html', context)
 
 
 def referanslar(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page': 'hakkimizda'}
+    category = Category.objects.all()
+    context = {'setting': setting,
+               'page': 'hakkimizda',
+               'category':category,
+               }
     return render(request, 'referanslarimiz.html', context)
 
 
@@ -59,8 +69,12 @@ def iletisim(request):
             return HttpResponseRedirect ('/iletisim')
 
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
     form = ContactFormu()
-    context = {'setting': setting, 'form': form}
+    context = {'setting': setting,
+               'form': form,
+               'category':category,
+               }
     return render(request, 'iletisim.html', context)
 
 
@@ -170,3 +184,31 @@ def signup_view(request):
 
     }
     return render(request, 'signup.html', context)
+
+
+@login_required(login_url='/login') #check login
+def addproduct(request):
+     url = request.META.get('HTTP_REFERER')
+     if request.method == 'POST': #POST EDİLDİYSE
+         form = AddProductForm(request.POST, request.FILES)
+         if form.is_valid():
+             current_user=request.user#access user session information
+
+             data = Product()
+             data.user_id = current_user.id
+             data.category = form.cleaned_data['category']
+             data.title = form.cleaned_data['title']
+             data.keywords = form.cleaned_data['keywords']
+             data.description = form.cleaned_data['description']
+             data.image = form.cleaned_data['image']
+             data.price = form.cleaned_data['price']
+             data.detail = form.cleaned_data['detail']
+             data.slug = form.cleaned_data['slug']
+             data.save()#veritabanına kaydet
+             messages.success(request, "eklendi saolun")
+             return HttpResponseRedirect(url)
+
+
+
+     messages.warning(request, "gönderilemedi  bişey bozuk")
+     return HttpResponse('Please correct the error below.<br>' + str(form.errors))

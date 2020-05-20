@@ -49,6 +49,7 @@ class Product(models.Model):
         ('True', 'Evet'),
         ('False', 'Hayır'),
     )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     keywords = models.CharField(max_length=255)

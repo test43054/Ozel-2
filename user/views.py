@@ -6,8 +6,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 # Create your views here.
 from home.models import UserProfile
-from product.models import Category, Comment
+from product.models import Category, Comment, Product
 from user.forms import UserUpdateForm, ProfileUpdateForm
+from user.models import AddProductForm
 
 
 def index(request):
@@ -79,3 +80,18 @@ def deletecomment(request,id):
     Comment.objects.filter(id=id, user_id=current_user.id).delete()
     messages.success(request, 'silindi')
     return HttpResponseRedirect('/user/comments')
+
+
+########################################################################################################
+
+
+
+
+
+def addproduct1(request):
+    category = Category.objects.all()
+    current_user = request.user
+    # return HttpResponse("yorumlar")
+    context = {'category': category,
+               }
+    return render(request, 'user_addproduct.html', context)

@@ -147,18 +147,18 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="{{product.image.url}}" alt="" />
-								<h3>ZOOM</h3>
+								<a href="{{product.image.url}}"><img src="{{product.image.url}}" alt=""/></a>
+
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 
 								  <!-- Wrapper for slides -->
 								    <div class="carousel-inner">
 										<div class="item active">
-										  <a href=""><img src="{{product.image.url}}" style="Height:50px" alt=""></a>
+										  <a href="{{product.image.url}}"><img src="{{product.image.url}}" style="Height:50px" alt=""></a>
 
 											{% for rs in images %}
-										  <a href=""><img src="{{rs.image.url}}" style="Height:50px" alt=""></a>
+										  <a href="{{rs.image.url}}"><img src="{{rs.image.url}}" style="Height:50px" alt=""></a>
 											{% endfor %}
 
 										</div>
