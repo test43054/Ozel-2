@@ -5,7 +5,7 @@ from django.forms import ModelForm, Select, TextInput, FileInput
 
 from product.models import Product
 
-
+#burası formmumuzun olduğu yer
 class AddProductForm(ModelForm):
     class Meta:
         model = Product

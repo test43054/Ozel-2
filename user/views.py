@@ -83,15 +83,21 @@ def deletecomment(request,id):
 
 
 ########################################################################################################
-
-
-
-
-
-def addproduct1(request):
+@login_required(login_url='/login')
+def myhomes(request):
     category = Category.objects.all()
     current_user = request.user
+    products = Product.objects.filter(user_id=current_user.id)
     # return HttpResponse("yorumlar")
     context = {'category': category,
+               'products': products,
                }
-    return render(request, 'user_addproduct.html', context)
+    return render(request, 'myhomes.html', context)
+    #return HttpResponse("myhomesdeneme ")
+
+@login_required(login_url='/login')
+def deletemyhomes(request,id):
+    current_user = request.user
+    Product.objects.filter(id=id, user_id=current_user.id).delete()
+    messages.success(request, 'silindi')
+    return HttpResponseRedirect('/user/myhomes')

@@ -12,5 +12,7 @@ urlpatterns = [
     #path('addproduct/', views.addproduct, name='addproduct'),
     # ex: /polls/5/
     #path('<int:question_id>/', views.detail, name='detail'),
+    path('myhomes/', views.myhomes, name='myhomes'),
+    path('deletemyhomes/<int:id>', views.deletemyhomes, name='deletemyhomes'),
 
 ]

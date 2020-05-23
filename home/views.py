@@ -185,12 +185,12 @@ def signup_view(request):
     }
     return render(request, 'signup.html', context)
 
-
+#burası ürün eklediğimiz yer
 @login_required(login_url='/login') #check login
 def addproduct(request):
      url = request.META.get('HTTP_REFERER')
      if request.method == 'POST': #POST EDİLDİYSE
-         form = AddProductForm(request.POST, request.FILES)
+         form = AddProductForm(request.POST, request.FILES)  #forma gidiyor user modelsde
          if form.is_valid():
              current_user=request.user#access user session information
 

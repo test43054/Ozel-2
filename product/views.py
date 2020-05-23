@@ -8,11 +8,11 @@ from home.models import Setting
 from product.models import CommentForm, Comment, Category
 from user.models import AddProductForm
 
-
+#burası açılıyorekleme yapmak için direk form settings vs tanıttık
 def index(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
-    form = AddProductForm(request.POST, request.FILES)
+    form = AddProductForm(request.POST, request.FILES)#sayfaya add product gönderiyoruz home.wievsda
     context = {'setting': setting,
                'category': category,
                'form': form,

@@ -1,0 +1,64 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{profile.user_name}} Profile{% endblock %}
+{% block keywords %}{{setting.keywords}}{% endblock %}
+{% block description %}{{setting.description}}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+
+{% block maincontent %}
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-3">
+
+                    <div class="contact-form">
+
+                        <div class="status alert alert-success" style="display: none"></div>
+
+                        {% include "user_panel.html" %}
+
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="contact-info">
+                        <h2 class="title text-center">User comments</h2>
+
+
+                        <table class="table table-condensed">
+
+                            <tr class="cart_menu">
+
+                            {% for rs in products %}
+
+                            <tr>
+                                <td><h5>home</h5><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title}}</a></td>
+                                <td class="text-left" ><h5>image</h5><img src="{{rs.image.url}}" style="height: 70px" alt=""></td>
+                                <td><h5>Kullanıcı</h5><a href="/user">{{ rs.user}}</a></td>
+                                <td><h5>category</h5>{{ rs.category }}</td>
+                                <td><h5>title</h5>{{ rs.title }}</td>
+                                <td><h5>keywords</h5>{{ rs.keywords }}</td>
+                                <td><h5>description</h5>{{ rs.description }}</td>
+                                <td><h5>price</h5>{{ rs.price }}</td>
+                                <td><a href="/user/deletemyhomes/{{ rs.id }}" onclick="return confirm('silinecek onaylıyormusun')">sil</a></td>
+                            </tr>
+
+                            {% endfor %}
+
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
