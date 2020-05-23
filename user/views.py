@@ -7,7 +7,7 @@ from django.contrib import messages
 # Create your views here.
 from home.models import UserProfile
 from product.models import Category, Comment, Product
-from user.forms import UserUpdateForm, ProfileUpdateForm
+from user.forms import UserUpdateForm, ProfileUpdateForm, UserUpdateForm1
 from user.models import AddProductForm
 
 
@@ -101,3 +101,27 @@ def deletemyhomes(request,id):
     Product.objects.filter(id=id, user_id=current_user.id).delete()
     messages.success(request, 'silindi')
     return HttpResponseRedirect('/user/myhomes')
+
+
+
+def userhome_update(request,id):#burda id yi alıyoruz product user id sine atıyoruz eşitlensin boş kalmsın diye
+    product = Product.objects.get(id=id)
+    if request.method == 'POST':
+        userhomeupdate_form = UserUpdateForm1(request.POST, request.FILES, instance=product)
+        #profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile)
+        if userhomeupdate_form.is_valid():
+            userhomeupdate_form.save()
+            messages.success(request , 'Your has been updated!')
+            return redirect('/user/myhomes')
+        else:
+            messages.error(request, 'Please correct the error below.<br>' + str(userhomeupdate_form.errors))
+            return HttpResponseRedirect('/user/myhomes')
+    else:
+        category = Category.objects.all()
+        userhomeupdate_form = UserUpdateForm1(instance=product)
+        context = {
+            'category': category,
+            'userhomeupdate_form': userhomeupdate_form,
+            'product': product,
+        }
+        return render(request, 'userhome_update.html', context)

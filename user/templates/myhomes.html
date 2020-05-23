@@ -26,7 +26,13 @@
                 <div class="col-sm-9">
                     <div class="contact-info">
                         <h2 class="title text-center">User comments</h2>
-
+                        {% if messages %}
+                        {% for message in messages %}
+                            <div style="color: #d43f3a; font-size: medium">
+                                {{ message|safe }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
 
                         <table class="table table-condensed">
 
@@ -44,6 +50,8 @@
                                 <td><h5>description</h5>{{ rs.description }}</td>
                                 <td><h5>price</h5>{{ rs.price }}</td>
                                 <td><a href="/user/deletemyhomes/{{ rs.id }}" onclick="return confirm('silinecek onaylıyormusun')">sil</a></td>
+                                <td><a href="/user/update1/{{ rs.id }}" >güncelle</a></td>
+
                             </tr>
 
                             {% endfor %}

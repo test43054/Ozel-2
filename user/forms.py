@@ -6,6 +6,7 @@ from django.forms import TextInput,EmailInput,Select,FileInput
 from django import forms
 
 from home.models import UserProfile
+from product.models import Product
 
 
 class UserUpdateForm(UserChangeForm):
@@ -37,4 +38,20 @@ class ProfileUpdateForm(forms.ModelForm):
             'city' : Select(attrs={'class': 'input', 'placeholder': 'city'},choices=CITY),
             'country': TextInput(attrs={'class': 'form-control', 'placeholder': 'country'}),
             'image' : FileInput(attrs={'class': 'input', 'placeholder': 'image'}),
+        }
+
+
+class UserUpdateForm1(forms.ModelForm):#ev güncellemek şistediğimöizde buraya geliyoruz
+    class Meta:
+        model = Product
+        fields = ['category', 'title', 'keywords', 'description', 'image', 'price', 'detail','slug']  # buraya eklenecekler
+        widgets = {
+            'category': Select(attrs={'class': 'form-control', 'placeholder': 'category'}, ),
+            'title': TextInput(attrs={'class': 'form-control', 'placeholder': 'title'}),
+            'keywords': TextInput(attrs={'class': 'form-control', 'placeholder': 'keywords'}),
+            'description': TextInput(attrs={'class': 'form-control', 'placeholder': 'description'}),
+            'image': FileInput(attrs={'class': 'form-control', 'placeholder': 'image'}),
+            'price': TextInput(attrs={'class': 'form-control', 'placeholder': 'price'}),
+            'detail': TextInput(attrs={'class': 'form-control', 'placeholder': 'detail'}),
+            'slug': TextInput(attrs={'class': 'form-control', 'placeholder': 'slug'}),
         }

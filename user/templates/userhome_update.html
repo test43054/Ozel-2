@@ -1,0 +1,47 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{profile.user_name}} Profile{% endblock %}
+{% block keywords %}{{setting.keywords}}{% endblock %}
+{% block description %}{{setting.description}}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+
+{% block maincontent %}
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-3">
+
+                <div class="contact-form">
+
+                    <div class="status alert alert-success" style="display: none"></div>
+
+                    {% include "user_panel.html" %}
+
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="contact-info">
+                    <h2 class="title text-center">User home update</h2>
+                </div>
+                <div class="content-section">
+                     <form action="/user/update1/{{ product.id }}" method="POST" enctype="multipart/form-data"> <!--#product id yi wievse gönderiyoruz-->
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                             {{ userhomeupdate_form.media }}
+                            {{ userhomeupdate_form.as_p }}
+                        </fieldset>
+                        <div class="form-group">
+                           <!-- <button class="btn btn-primary" type="submit">Update</button>-->
+                            <input class="primary-btn" type="submit" value="güncelle">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

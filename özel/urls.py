@@ -41,6 +41,7 @@ urlpatterns = [
     path('signup/', views.signup_view, name='signup_view'),
     path('addproduct/', views.addproduct, name='addproduct'),#addproduct ı bütün heryere tanıtıyoruz
 
+
 ]
 
 if settings.DEBUG:
