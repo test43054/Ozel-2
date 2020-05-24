@@ -40,6 +40,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login_view'),
     path('signup/', views.signup_view, name='signup_view'),
     path('addproduct/', views.addproduct, name='addproduct'),#addproduct ı bütün heryere tanıtıyoruz
+    path('sss/', views.faq, name='faq'),
 
 
 ]

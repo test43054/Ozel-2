@@ -1,4 +1,5 @@
 import json
+from tkinter import Menu
 
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
@@ -8,7 +9,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormu, ContactFormMessage, UserProfile
+from home.models import Setting, ContactFormu, ContactFormMessage, UserProfile, FAQ
 from product.models import Product, Category, Images, Comment
 from user.models import AddProductForm
 
@@ -212,3 +213,15 @@ def addproduct(request):
 
      messages.warning(request, "gönderilemedi  bişey bozuk")
      return HttpResponse('Please correct the error below.<br>' + str(form.errors))
+
+
+def faq(request):
+   # return HttpResponse("sıkça sorulan sorular")
+   category = Category.objects.all()
+  # menu=Menu.objects.all()
+   faq = FAQ.objects.all().order_by('ordernumber')
+   context = {
+      'category': category,
+      'faq': faq,
+    }
+   return render(request, 'faq.html', context)

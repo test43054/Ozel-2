@@ -27,15 +27,15 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/user/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/home/templates" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Django\özel\home\templates" />
       <recent name="C:\Django\özel\user\templates" />
       <recent name="C:\Django\özel\user" />
       <recent name="C:\Django\özel\özel\templates" />
-      <recent name="C:\Django\özel\home\templates" />
       <recent name="C:\Django\özel\product" />
     </key>
   </component>
@@ -65,9 +65,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585337418117" />
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1590344286032">
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1590359141953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590344286032" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590359141953" />
   </component>
 </project>

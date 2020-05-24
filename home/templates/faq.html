@@ -1,0 +1,66 @@
+{% extends "homebase.html" %}
+
+{% block title %}sıkça sorulan sorular{% endblock %}
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+
+
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
+
+{% endblock %}
+<!--
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+-->
+
+{% block maincontent %}
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Anasayfa</a> </li>
+                <li class="active">sıkça sorulan sorular</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <table cellpadding="3" width="1200">
+
+
+
+                    <div id="accordion">
+                        {% for rs in faq %}
+                        <h3 style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;{{ rs.question }}</h3>
+                        <div>
+                            <p> {{ rs.answer }}</p>
+                       </div>
+                        {% endfor %}
+                    </div>
+
+
+                    <!--
+                    {% for rs in faq %}
+                        <tr>
+                            <td><strong>{{ rs.question }}</strong> </td>
+                        </tr>
+                        <tr>
+                             <td>{{ rs.answer }} </td>
+                        </tr>
+                    {% endfor %}
+                    -->
+
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
