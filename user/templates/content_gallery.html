@@ -1,0 +1,37 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>content galeri</title>
+
+</head>
+<body>
+<h2>{{ product.title }}***
+	{{ product.id }}
+</h2>
+<hr>
+{% if messages %}
+{% for message in messages %}
+<div style="color: #d43f3a; font-size: medium">
+	{{ message|safe }}
+</div>
+{% endfor %}
+{% endif %}
+
+<form action="/user/contentaddimage/{{ product.id }}" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type="hidden" name="product_id" id="id_product_id" value="{{ product.id }}"></p>
+	<label for="id_title">TİTLE:</label>
+	<input type="text" name="title" class="input" placeholder="title" maxlength="50"  id="id_title"></p>
+	<label for="id_image">image:</label>
+	<input type="file" name="image" class="input" placeholder="image" accept="image/*"  id="id_image"> </p>
+	<button class="primary-btn" type="submit">resmi yükle</button>
+</form>
+<h4>yüklenen resimler</h4>
+
+{% for rs in images %}
+<img src="{{ rs.image.url }}" height="175">
+{% endfor %}
+
+
+</body>
+</html>

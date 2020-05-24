@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 # Create your views here.
 from home.models import UserProfile
-from product.models import Category, Comment, Product
+from product.models import Category, Comment, Product, ContentImageForm, Images
 from user.forms import UserUpdateForm, ProfileUpdateForm, UserUpdateForm1
 from user.models import AddProductForm
 
@@ -125,3 +125,32 @@ def userhome_update(request,id):#burda id yi alıyoruz product user id sine atı
             'product': product,
         }
         return render(request, 'userhome_update.html', context)
+
+
+def contentaddimage(request, id):#product ımagesden alıyor oda producta bağşlı hepsi birbirine bağlı
+    if request.method == 'POST':
+        lasturl= request.META.get('HTTP_REFERER')
+        form = ContentImageForm(request.POST, request.FILES)
+        #messages.warning(request, '1 if e giriyor :' + str(form.errors))
+        if form.is_valid():
+            data = Images()
+            data.title = form.cleaned_data['title']
+            data.product_id = id
+            data.image = form.cleaned_data['image']
+            data.save()
+            messages.success(request, 'GALERİ RESMİNİZ YÜKLENDİ')
+            return HttpResponseRedirect(lasturl)
+        else:
+            messages.warning(request, 'GALERİ RESMİNİZ yüklrnirken hata oluştu :'+ str(form.errors))
+            return HttpResponseRedirect(lasturl)
+    else:
+        product = Product.objects.get(id=id)
+        images = Images.objects.filter(product_id=id)
+        form = ContentImageForm()
+        context = {
+            'product': product,
+            'images': images,
+            'form': form,
+        }
+        #messages.warning(request, '1. else düşüyor :' + str(form.errors))
+        return render(request,'content_gallery.html',context)

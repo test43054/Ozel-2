@@ -86,6 +86,11 @@ class Images(models.Model):
 
     image_tag.short_description = 'Image'
 
+class ContentImageForm(ModelForm):
+    class Meta:
+        model = Images
+        fields = ['title','image']
+
 
 class Comment(models.Model):
     STATUS = (

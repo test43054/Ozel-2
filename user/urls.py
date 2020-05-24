@@ -15,6 +15,7 @@ urlpatterns = [
     path('myhomes/', views.myhomes, name='myhomes'),
     path('deletemyhomes/<int:id>', views.deletemyhomes, name='deletemyhomes'),
     path('update1/<int:id>', views.userhome_update, name='userhome_update'),
+    path('contentaddimage/<int:id>', views.contentaddimage, name='contentaddimage'),
 
 
 
