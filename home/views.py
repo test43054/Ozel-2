@@ -203,6 +203,7 @@ def addproduct(request):
              data.description = form.cleaned_data['description']
              data.image = form.cleaned_data['image']
              data.price = form.cleaned_data['price']
+             data.ili = form.cleaned_data['ili']
              data.detail = form.cleaned_data['detail']
              data.slug = form.cleaned_data['slug']
              data.save()#veritabanına kaydet

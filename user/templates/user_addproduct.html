@@ -31,7 +31,13 @@
                     <table class="table table-condensed">
 
                         <tr class="cart_menu">
-
+                           {% if messages %}
+                              {% for message in messages %}
+                                 <div style="color: #d43f3a; font-size: medium">
+	                                 {{ message|safe }}
+                                 </div>
+                              {% endfor %}
+                           {% endif %}
 
                             <form action="/addproduct/" method="post" enctype="multipart/form-data"><!--home views de-->
                                 {% csrf_token %}
@@ -43,7 +49,7 @@
                                 <input class="primary-btn" type="submit" value="Add Product">
 
                                 {% if user.id is not None %}
-                                {% else %},
+                                {% else %}
                                 {% endif %}
                             </form>
 
