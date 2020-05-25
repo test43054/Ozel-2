@@ -193,6 +193,43 @@
 					</div>
 				</div><!--/recommended_items-->
 
+				<div class="recommended_items"><!--son eklenenler-->
+					<h2 class="title text-center">Son eklenen Kiralık Evler</h2>
+
+					<div  class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+							<div class="item active">
+								<!--**************************************random-->
+
+								{% for rs in lastproducts %}
+								<div class="col-sm-4">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img width="50" height="240" src="{{rs.image.url}}" alt="" />
+												<h2>{{rs.price}}</h2>
+												<p>{{rs.title}}</p>
+												<a href="/product/{{rs.id}}/{{rs.slug}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sayfasına Git</a>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+
+								<!--**************************************son eklenenler-->
+							</div>
+
+						</div>
+						<a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+				</div><!--/son eklenenler-->
+
 			</div>
 		</div>
 	</div>

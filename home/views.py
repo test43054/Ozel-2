@@ -19,7 +19,7 @@ def index(request):
     sliderdata = Product.objects.all()[:10]
     category=Category.objects.all()
     dayproducts = Product.objects.filter(status='True')[:6]
-    lastproducts = Product.objects.filter(status='True').order_by('-id')[:7]
+    lastproducts = Product.objects.filter(status='True').order_by('-id')[:3]#burda kaç tane olcağını belirliyoruz
     randomproducts = Product.objects.filter(status='True').order_by('?')[:3]
 
     context = {'setting': setting,
