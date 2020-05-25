@@ -56,6 +56,7 @@ class Product(models.Model):
     description = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
     price = models.FloatField()
+    ili = models.CharField(max_length=50)
     #amount = models.IntegerField()
     detail = RichTextUploadingField()
     slug = models.SlugField(null=False, unique=True)
