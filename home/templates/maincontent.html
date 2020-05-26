@@ -12,7 +12,7 @@
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
 										<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-										Category
+										Kategoriler
 									</a>
 								</h4>
 							</div>
@@ -135,14 +135,14 @@
 
 			<div class="col-sm-9 padding-right">
 				<div class="features_items"><!--features_items-->
-					<h2 class="title text-center">Kiralık Evler</h2>
+					<h2 class="title text-center">Rastgele Kiralık Evler</h2>
 
 
 					<!--**************************************-->
-					{% for rs in dayproducts %}
+					{% for rs in randomproducts %}
 					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
+						<div>
+							<div class="a">
 								<div class="productinfo text-center">
 									<a href="/product/{{rs.id}}/{{rs.slug}}"><img src="{{rs.image.url}}" alt="image" style="height: 250px"/></a>
 									<h2>{{rs.price}}</h2>
@@ -157,14 +157,14 @@
 				</div><!--features_items-->
 
 				<div class="recommended_items"><!--recommended_items-->
-					<h2 class="title text-center">Rastgele Kiralık Evler</h2>
+					<h2 class="title text-center">Kiralık Evler</h2>
 
 					<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
 							<div class="item active">
 								<!--**************************************random-->
 
-								{% for rs in randomproducts %}
+								{% for rs in dayproducts %}
 								<div class="col-sm-4">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -199,7 +199,7 @@
 					<div  class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
 							<div class="item active">
-								<!--**************************************random-->
+								<!--**************************************sonekleneler-->
 
 								{% for rs in lastproducts %}
 								<div class="col-sm-4">
@@ -228,7 +228,7 @@
 							<i class="fa fa-angle-right"></i>
 						</a>
 					</div>
-				</div><!--/son eklenenler-->
+				</div><!--***-->
 
 			</div>
 		</div>

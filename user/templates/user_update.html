@@ -1,8 +1,8 @@
 {% extends "homebase.html" %}
 
 {% block title %}{{profile.user_name}} Profile{% endblock %}
-{% block keywords %}{{setting.keywords}}{% endblock %}
-{% block description %}{{setting.description}}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
 
 {% block head %}
     <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
@@ -20,7 +20,13 @@
                     <div class="status alert alert-success" style="display: none"></div>
 
                     {% include "user_panel.html" %}
-
+                    {% if messages %}
+{% for message in messages %}
+<div style="color: #d43f3a; font-size: medium">
+	{{ message|safe }}
+</div>
+{% endfor %}
+{% endif %}
                 </div>
             </div>
             <div class="col-sm-9">

@@ -44,7 +44,7 @@ class ProfileUpdateForm(forms.ModelForm):
 class UserUpdateForm1(forms.ModelForm):#ev güncellemek şistediğimöizde buraya geliyoruz
     class Meta:
         model = Product
-        fields = ['category', 'title', 'keywords', 'description', 'image', 'price','ili', 'detail','slug']  # buraya eklenecekler
+        fields = ['category', 'title', 'keywords', 'description', 'image', 'price','ili', 'detail','slug','metrekare','binayasi','kati','banyosayisi','balkonsayisi','esyali','aidat','depozito','odasayisi']  # buraya eklenecekler
         widgets = {
             'category': Select(attrs={'class': 'form-control', 'placeholder': 'category'}, ),
             'title': TextInput(attrs={'class': 'form-control', 'placeholder': 'title'}),
@@ -55,4 +55,13 @@ class UserUpdateForm1(forms.ModelForm):#ev güncellemek şistediğimöizde buray
             'ili': TextInput(attrs={'class': 'form-control', 'placeholder': 'ili'}),
             'detail': TextInput(attrs={'class': 'form-control', 'placeholder': 'detail'}),
             'slug': TextInput(attrs={'class': 'form-control', 'placeholder': 'slug'}),
+            'metrekare': TextInput(attrs={'class': 'form-control', 'placeholder': 'metrekare'}),
+            'binayasi': TextInput(attrs={'class': 'form-control', 'placeholder': 'binayasi'}),
+            'kati': TextInput(attrs={'class': 'form-control', 'placeholder': 'kati'}),
+            'banyosayisi': TextInput(attrs={'class': 'form-control', 'placeholder': 'banyosayisi'}),
+            'esyali': Select(attrs={'class': 'form-control', 'placeholder': 'esyali'}),
+            'aidat': TextInput(attrs={'class': 'form-control', 'placeholder': 'aidat'}),
+            'balkonsayisi': TextInput(attrs={'class': 'form-control', 'placeholder': 'balkonsayisi'}),
+            'depozito': TextInput(attrs={'class': 'form-control', 'placeholder': 'depozito'}),
+            'odasayisi': TextInput(attrs={'class': 'form-control', 'placeholder': 'odasayisi'}),
         }

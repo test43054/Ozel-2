@@ -1,8 +1,8 @@
 {% extends "homebase.html" %}
 
-{% block title %}{{profile.user_name}} Profile{% endblock %}
-{% block keywords %}{{setting.keywords}}{% endblock %}
-{% block description %}{{setting.description}}{% endblock %}
+{% block title %}{{profile.user_name}} Profili{% endblock %}
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
 
 {% block head %}
     <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
@@ -25,7 +25,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="contact-info">
-                    <h2 class="title text-center">User home update</h2>
+                    <h2 class="title text-center">Kiralık ev Güncelleme</h2>
                 </div>
                 <div class="content-section">
                      <form action="/user/update1/{{ product.id }}" method="POST" enctype="multipart/form-data"> <!--#product id yi wievse gönderiyoruz-->

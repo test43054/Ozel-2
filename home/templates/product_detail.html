@@ -124,22 +124,22 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<a href="{{product.image.url}}"><img src="{{product.image.url}}" alt=""/></a>
+								<a href="{{product.image.url}}"><img src="{{product.image.url}}" alt=""/></a><!--büyük resim burda-->
 
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 
-								  <!-- Wrapper for slides -->
+								  <!-- slider böyle çaışıyor  -->
 								    <div class="carousel-inner">
 										<div class="item active">
-										  <a href="{{product.image.url}}"><img src="{{product.image.url}}" style="Height:50px" alt=""></a>
+										  <a href="{{product.image.url}}"><img src="{{product.image.url}}" style="Height:60px" alt=""></a>
 
 											{% for rs in images %}
-										  <a href="{{rs.image.url}}"><img src="{{rs.image.url}}" style="Height:50px" alt=""></a>
+										  <a href="{{rs.image.url}}"><img src="{{rs.image.url}}" style="Height:60px" alt=""></a>
 											{% endfor %}
 
 										</div>
-										
+
 
 									</div>
 
@@ -157,12 +157,23 @@
 							<div class="product-information"><!--/product-information-->
 								<img src="" class="newarrival" alt="" />
 								<h2>{{product.title}}</h2>
-								<h3>{{product.description}}</h3>
-								<h3>{{product.ili}}</h3>
-								<p>Web ID: 1089772</p>
+								<!--<h5><i><b>Detaylar:&nbsp</b></i>{{product.description}}</h5>-->
+								<h5><i><b>Metrekare:&nbsp</b></i>{{product.metrekare}}</h5>
+								<h5><i><b>Oda Sayısı:&nbsp</b></i>{{product.odasayisi}}</h5>
+								<h5><i><b>Bina Yaşı:&nbsp</b></i>{{product.binayasi}}</h5>
+								<h5><i><b>Bulunduğu kat:&nbsp</b></i>{{product.kati}}</h5>
+								<h5><i><b>Isıtma:&nbsp</b></i>{{product.isitma}}</h5>
+								<h5><i><b>Banyo Sayısı:&nbsp</b></i>{{product.banyosayisi}}</h5>
+								<h5><i><b>Balkon Sayısı:&nbsp</b></i>{{product.balkonsayisi}}</h5>
+								<h5><i><b>Eşyalı:&nbsp</b></i>{{product.esyali}}</h5>
+								<h5><i><b>Aidat:&nbsp</b></i>{{product.aidat}}TL</h5>
+								<h5><i><b>Depozito:&nbsp</b></i>{{product.depozito}}TL</h5>
+
+
+
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
-									<span>{{product.price}}</span>
+									<span>{{product.price}}&nbspTL</span>
 								</span>
 								<p></p>
 
@@ -174,7 +185,7 @@
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li><a href="#details" data-toggle="tab">Details</a></li>
+								<li><a href="#details" data-toggle="tab">Detaylar</a></li>
 							</ul>
 						</div>
 						{{product.detail | safe}}
