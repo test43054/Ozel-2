@@ -176,7 +176,7 @@ def signup_view(request):
             data.user_id=current_user.id
             data.image="images/users/user.png"
             data.save()
-           # messages.success(request, "üye oldunuz süpersiniz!!!!!!")
+            messages.success(request, "üye oldunuz süpersiniz!!!!!!")
             return HttpResponseRedirect('/')
     form = SignUpForm()
     category = Category.objects.all()

@@ -54,7 +54,7 @@ class Product(models.Model):
     title = models.CharField(max_length=150,blank=False)
     keywords = models.CharField(max_length=255,blank=False)
     description = models.CharField(max_length=255,blank=False)
-    image = models.ImageField(blank=False, upload_to='images/')
+    image = models.ImageField(blank=True, upload_to='images/')
     price = models.FloatField()
     ili = models.CharField(max_length=50,blank=False)
     metrekare = models.IntegerField(max_length=50,default=10)
