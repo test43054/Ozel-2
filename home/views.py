@@ -83,7 +83,7 @@ def iletisim(request):
 def category_products(request, id, slug):
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
-    products = Product.objects.filter(category_id=id)
+    products = Product.objects.filter(category_id=id,status='True')
     #products = Product.objects.all()
     context = {'products': products, 'category': category,'categorydata':categorydata}
     return render(request,'products.html', context)
@@ -112,9 +112,9 @@ def product_search(request):
             catid = form.cleaned_data['catid']
 
             if catid == 0:
-                products = Product.objects.filter(title__icontains=query) #select * from products where title like %query%
+                products = Product.objects.filter(title__icontains=query,status='True') #select * from products where title like %query%
             else:
-                products =Product.objects.filter(title__icontains=query,category_id=catid)
+                products =Product.objects.filter(title__icontains=query,category_id=catid,status='True')
             context ={ 'products': products,
                        'category': category,
 
@@ -125,7 +125,7 @@ def product_search(request):
 def product_search_auto(request):
     if request.is_ajax():
         q = request.GET.get('term', '')
-        product = Product.objects.filter(title__icontains=q)
+        product = Product.objects.filter(title__icontains=q,status='True')
         results = []
         for rs in product:
             product_json = {}
@@ -206,6 +206,16 @@ def addproduct(request):
              data.ili = form.cleaned_data['ili']
              data.detail = form.cleaned_data['detail']
              data.slug = form.cleaned_data['slug']
+             data.metrekare = form.cleaned_data['metrekare']
+             data.binayasi = form.cleaned_data['binayasi']
+             data.kati = form.cleaned_data['kati']
+             data.banyosayisi = form.cleaned_data['banyosayisi']
+             data.esyali = form.cleaned_data['esyali']
+             data.aidat = form.cleaned_data['aidat']
+             data.balkonsayisi = form.cleaned_data['balkonsayisi']
+             data.depozito = form.cleaned_data['depozito']
+             data.odasayisi = form.cleaned_data['odasayisi']
+             data.isitma = form.cleaned_data['isitma']
              data.save()#veritabanına kaydet
              messages.success(request, "eklendi saolun")
              return HttpResponseRedirect(url)

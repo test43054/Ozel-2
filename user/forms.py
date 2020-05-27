@@ -44,7 +44,7 @@ class ProfileUpdateForm(forms.ModelForm):
 class UserUpdateForm1(forms.ModelForm):#ev güncellemek şistediğimöizde buraya geliyoruz
     class Meta:
         model = Product
-        fields = ['category', 'title', 'keywords', 'description', 'image', 'price','ili', 'detail','slug','metrekare','binayasi','kati','banyosayisi','balkonsayisi','esyali','aidat','depozito','odasayisi']  # buraya eklenecekler
+        fields = ['category', 'title', 'keywords', 'description', 'image', 'price','ili', 'detail','slug','metrekare','binayasi','kati','banyosayisi','balkonsayisi','esyali','aidat','depozito','odasayisi','isitma']  # buraya eklenecekler
         widgets = {
             'category': Select(attrs={'class': 'form-control', 'placeholder': 'category'}, ),
             'title': TextInput(attrs={'class': 'form-control', 'placeholder': 'title'}),
@@ -64,4 +64,5 @@ class UserUpdateForm1(forms.ModelForm):#ev güncellemek şistediğimöizde buray
             'balkonsayisi': TextInput(attrs={'class': 'form-control', 'placeholder': 'balkonsayisi'}),
             'depozito': TextInput(attrs={'class': 'form-control', 'placeholder': 'depozito'}),
             'odasayisi': TextInput(attrs={'class': 'form-control', 'placeholder': 'odasayisi'}),
+            'isitma': TextInput(attrs={'class': 'form-control', 'placeholder': 'isitma'}),
         }

@@ -9,7 +9,7 @@ from product.models import Product
 class AddProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ['category','title','keywords','description','image','price','ili','detail','slug','metrekare','binayasi','kati','banyosayisi','balkonsayisi','esyali','aidat','depozito','odasayisi']#buraya eklenecekler
+        fields = ['category','title','keywords','description','image','price','ili','detail','slug','metrekare','binayasi','kati','banyosayisi','balkonsayisi','esyali','aidat','depozito','odasayisi','isitma']#buraya eklenecekler
         widgets = {
             'category': Select(attrs={'class': 'form-control', 'placeholder': 'category'}, ),
             'title': TextInput(attrs={'class': 'form-control', 'placeholder': 'title'}),
@@ -29,4 +29,5 @@ class AddProductForm(ModelForm):
             'balkonsayisi': TextInput(attrs={'class': 'form-control', 'placeholder': 'balkonsayisi'}),
             'depozito': TextInput(attrs={'class': 'form-control', 'placeholder': 'depozito'}),
             'odasayisi': TextInput(attrs={'class': 'form-control', 'placeholder': 'odasayisi'}),
+            'isitma': TextInput(attrs={'class': 'form-control', 'placeholder': 'isitma'}),
         }

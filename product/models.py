@@ -51,12 +51,12 @@ class Product(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    title = models.CharField(max_length=150)
-    keywords = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
-    image = models.ImageField(blank=True, upload_to='images/')
+    title = models.CharField(max_length=150,blank=False)
+    keywords = models.CharField(max_length=255,blank=False)
+    description = models.CharField(max_length=255,blank=False)
+    image = models.ImageField(blank=False, upload_to='images/')
     price = models.FloatField()
-    ili = models.CharField(max_length=50)
+    ili = models.CharField(max_length=50,blank=False)
     metrekare = models.IntegerField(max_length=50,default=10)
     binayasi = models.IntegerField(max_length=250, default=1)
     kati = models.IntegerField(max_length=250, default=1)
@@ -88,7 +88,7 @@ class Product(models.Model):
 class Images(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, blank=True)
-    image = models.ImageField(blank=True, upload_to='images/')
+    image = models.ImageField(blank=False, upload_to='images/')
     def __str__(self):
         return self.title
 
