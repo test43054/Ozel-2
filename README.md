@@ -1,2 +1,2 @@
 # Ozel-2
- Özel 2 Django projesi
+a E commerce Django project
